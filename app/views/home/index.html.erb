@@ -1,14 +1,33 @@
-<% name = current_user.present? ? current_user.email : 'Stranger' %>
+<html>
+  <head>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
-<h1>Welcome, <%= name %> </h1>
-<table>
-  <tr>
-    <th>Test</th>
-  </tr>
-  <% @owned_games.each do |game| %>
-    <tr>
-      <td><%= game.name %></td>
-      <td><%= game.playtime_forever %> minutes</td>
-    </tr>
-  <% end %>
-</table>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <style>
+    tr:nth-child(even) {
+      background-color: #dddddd
+    }
+  </style>
+  <body>
+    <table class='table-auto'>
+      <thead>
+        <tr>
+          <th>Game</th>
+          <th>Play Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @owned_games_sorted.each do |game| %>
+          <tr>
+            <td><%= game.name %></td>
+            <td><%= game.playtime_forever %> minutes</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </body>
+</html>
