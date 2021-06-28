@@ -4,7 +4,8 @@ class HomeController < ApplicationController
   def index
     @owned_games = owned_games
     @user_stats = user_stats
-    @owned_games_sorted = owned_games.sort_by { |game| [-game.playtime_forever] }
+    @played_games = owned_games.select { |game| game.playtime_forever > 0 }
+    @played_games_sorted = @played_games.sort_by { |game| [-game.playtime_forever] }
   end
 
   private
