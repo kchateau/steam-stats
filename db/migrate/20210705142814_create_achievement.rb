@@ -1,0 +1,7 @@
+class CreateAchievement < ActiveRecord::Migration[5.2]
+  def change
+    create_table :achievements do |t|
+      t.string :apiname
+    end
+  end
+end
