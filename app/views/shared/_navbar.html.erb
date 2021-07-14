@@ -1,6 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <%= image_tag @user_stats.first.avatar %>
-  <a class="navbar-brand"><%= @user_stats.first.personaname %></a>
+  <% if user_signed_in? %>
+    <%= image_tag @user_stats.first.avatar %>
+    <a class="navbar-brand"><%= @user_stats.first.personaname %></a>
+  <% end %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
